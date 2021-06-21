@@ -2,20 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     [SerializeField] CardController cardPrefab;
     [SerializeField] Transform playerHand,EnemyHand;
 
     bool isPlayerTurn = true; 
-    List<int> deck = new List<int>() {1,2,3,4,5,6,7,8,9,10};
-    List<int> deck2 = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    List<int> deck = new List<int>() {1,2,3,4,5,6,7,8,9};
+    List<int> deck2 = new List<int>() {1,2,3,4,5,6,7,8,9};
     public CardEntity cardEntity;
+    public float countDown = 5.0f;
+    public int turn = 0;
     
 
     void Start()
     {
         StartGame();
+    }
+    void Update()
+    {
+        Debug.Log(countDown);
+        if (countDown >= 0)
+        {
+            countDown -= Time.deltaTime;
+
+        }
+        else if (countDown < 0)
+        {
+            GameObject[] Card10 = GameObject.FindGameObjectsWithTag("Card10");
+            foreach (GameObject card10 in Card10)
+                GameObject.Destroy(card10);
+            ChangeTurn();
+        }
     }
     void StartGame()
     {
@@ -23,7 +41,7 @@ public class GameManager : MonoBehaviour
         SetStartHand();
 
         // ターンの決定
-        TurnCalc();
+        //TurnCalc();
     }
 
     public void CreateCard(int cardID, Transform place)
@@ -184,6 +202,7 @@ public class GameManager : MonoBehaviour
                 {
                     DrowCard4(EnemyHand);
                 }
+                ChangeTurn();
                 break;
             case 2:
                 for (int i = 0; i < 11; i++)
@@ -194,6 +213,7 @@ public class GameManager : MonoBehaviour
                 {
                     DrowCard3(EnemyHand);
                 }
+                PlayerTurn();
                 break;
         }
     }
@@ -215,13 +235,20 @@ public class GameManager : MonoBehaviour
     }
     void PlayerTurn()
     {
+        turn++;
+        Debug.Log(turn);
+        CreateCard2(10, EnemyHand);
+        countDown = 5.0f;
         Debug.Log("Playerのターン");
     }
 
     void EnemyTurn()
     {
+        turn++;
+        Debug.Log(turn);
+        CreateCard(10, playerHand);
+        countDown = 5.0f;
         Debug.Log("Enemyのターン");
-        ChangeTurn(); // ターンエンドする
     }
     void Shuffle ()
     {
