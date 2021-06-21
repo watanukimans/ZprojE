@@ -7,6 +7,9 @@ using Photon.Realtime;
 // MonoBehaviourPunCallbacksを継承して、PUNのコールバックを受け取れるようにする
 public class TestScene : MonoBehaviourPunCallbacks
 {
+
+    public static GameObject My; //自身のアバターを格納
+
     private void Start()
     {
         PhotonNetwork.NickName = "Player";
@@ -28,14 +31,16 @@ public class TestScene : MonoBehaviourPunCallbacks
     {
         // ランダムな座標に自身のアバター（ネットワークオブジェクト）を生成する
         var position = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
-        PhotonNetwork.Instantiate("Avatar", position, Quaternion.identity);
-        //base.OnJoinedRoom();
+        My = PhotonNetwork.Instantiate("Avatar", position, Quaternion.identity);
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            My.gameObject.transform.Rotate(new Vector3(0, 0, 10));
+        }
     }
 }

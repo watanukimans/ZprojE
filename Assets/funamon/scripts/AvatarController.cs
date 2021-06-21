@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 
 public class AvatarController : MonoBehaviourPunCallbacks
 {
+    public Text SelectText;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,4 +23,11 @@ public class AvatarController : MonoBehaviourPunCallbacks
             transform.Translate(6f * Time.deltaTime * input.normalized);
         }
     }
+
+    public void Select(string name)
+    {
+        SelectText.text = name;
+    }
+
+    
 }
