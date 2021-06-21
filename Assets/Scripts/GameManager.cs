@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
@@ -13,6 +15,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public CardEntity cardEntity;
     public float countDown = 5.0f;
     public int turn = 0;
+    public int decknum;
+    //テスト用
+    public int dCard;
+    public int t1;
+    public int t2;
+    public int t3;
+    public int t4;
+    public int t5;
+    public int t6;
+    public int t7;
+    public int t8;
+    public int t9;
     
 
     void Start()
@@ -190,7 +204,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     void SetStartHand() // 手札を配る
     {
         Shuffle();
-        int decknum = Random.Range(1, 3);
+        decknum = Random.Range(1, 3);
         switch (decknum)
         {
             case 1:
@@ -250,11 +264,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         countDown = 5.0f;
         Debug.Log("Enemyのターン");
     }
-    void Shuffle ()
+    void Shuffle()
     {
         int n = deck.Count;
-        while(n>1)
-        { n--;
+        while (n > 1)
+        {
+            n--;
             int k = UnityEngine.Random.Range(0, n + 1);
             int temp = deck[k];
             deck[k] = deck[n];
@@ -266,8 +281,55 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             m--;
             int l = UnityEngine.Random.Range(0, m + 1);
             int temp2 = deck2[l];
-           deck2[l] = deck2[m];
-             deck2[m] = temp2;
+            deck2[l] = deck2[m];
+            deck2[m] = temp2;
         }
     }
+    //ここから下未実装
+    /*
+    void SetHand()
+    {
+        Shuffle();
+        switch (decknum)
+        {
+            case 1:
+                for (int i = 0; i < 11; i++)
+                {
+                    DrowCard(playerHand);
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    DrowCard4(EnemyHand);
+                }
+                ChangeTurn();
+                break;
+            case 2:
+                for (int i = 0; i < 11; i++)
+                {
+                    DrowCard2(playerHand);
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    DrowCard3(EnemyHand);
+                }
+                PlayerTurn();
+                break;
+        }
+    }
+    void ReShuffle()
+    {   for (int n = 1; n < 10; n++){
+            deck.Add(n);
+            deck2.Add(n);
+        }
+        if (dCard == 1)
+        {
+            deck.Remove(t1);
+        }
+        if (dCard == 2)
+        {
+            deck.Remove(t1);
+            deck.Remove(t2);
+        }
+    }
+    */
 }

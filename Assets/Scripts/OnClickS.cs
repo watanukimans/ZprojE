@@ -115,4 +115,5 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
         }
 
     }
+    
 }
