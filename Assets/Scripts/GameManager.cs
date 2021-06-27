@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
@@ -10,8 +11,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField] Transform playerHand,EnemyHand;
 
     bool isPlayerTurn = true; 
-    List<int> deck = new List<int>() {1,2,3,4,5,6,7,8,9};
-    List<int> deck2 = new List<int>() {1,2,3,4,5,6,7,8,9};
+    List<int> deck = new List<int>() {};
+    List<int> deck2 = new List<int>() {};
     public CardEntity cardEntity;
     public float countDown = 5.0f;
     public int turn = 0;
@@ -27,7 +28,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public int t7;
     public int t8;
     public int t9;
-    
+    public Image UIobj;
+    public float countTime = 5.0f;
+
 
     void Start()
     {
@@ -35,11 +38,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
     void Update()
     {
-        Debug.Log(countDown);
+        //Debug.Log("相手のターンまで"+countDown);
         if (countDown >= 0)
         {
             countDown -= Time.deltaTime;
-
+            UIobj.fillAmount -= 1.0f / countTime*Time.deltaTime;
         }
         else if (countDown < 0)
         {
@@ -173,6 +176,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         // デッキの一番上のカードを抜き取り、手札に加える
         int cardID = deck2[0];
         deck2.RemoveAt(0);
+        CreateCard2(cardID, hand);
+    }
+    /*
+    void DrowCard2(Transform hand) // カードを引く
+    {
+        // デッキがないなら引かない
+        if (deck2.Count == 0)
+        {
+            return;
+        }
+
+        // デッキの一番上のカードを抜き取り、手札に加える
+        int cardID = deck2[0];
+        deck2.RemoveAt(0);
         CreateCard(cardID, hand);
     }
     void DrowCard3(Transform hand) // カードを引く
@@ -201,13 +218,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         deck2.RemoveAt(0);
         CreateCard2(cardID, hand);
     }
+    */
     void SetStartHand() // 手札を配る
     {
-        Shuffle();
+        //Shuffle();
         decknum = Random.Range(1, 3);
         switch (decknum)
         {
             case 1:
+                /*
                 for (int i = 0; i < 11; i++)
                 {
                     DrowCard(playerHand);
@@ -216,9 +235,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     DrowCard4(EnemyHand);
                 }
+                */
                 ChangeTurn();
                 break;
             case 2:
+                /*
                 for (int i = 0; i < 11; i++)
                 {
                     DrowCard2(playerHand);
@@ -227,6 +248,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     DrowCard3(EnemyHand);
                 }
+                */
                 PlayerTurn();
                 break;
         }
@@ -249,18 +271,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
     void PlayerTurn()
     {
+        MaxGauge();
+        SetHand();
         turn++;
         Debug.Log(turn);
-        CreateCard2(10, EnemyHand);
+        //CreateCard2(10, EnemyHand);
         countDown = 5.0f;
         Debug.Log("Playerのターン");
     }
 
     void EnemyTurn()
     {
+        MaxGauge();
+        SetHand();
         turn++;
         Debug.Log(turn);
-        CreateCard(10, playerHand);
+        //CreateCard(10, playerHand);
         countDown = 5.0f;
         Debug.Log("Enemyのターン");
     }
@@ -286,50 +312,195 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
     }
     //ここから下未実装
-    /*
     void SetHand()
     {
+        //ターンごとの手札シャッフル
+        ReShuffle();
         Shuffle();
-        switch (decknum)
+        for (int i = 0; i < 11; i++)
         {
-            case 1:
-                for (int i = 0; i < 11; i++)
-                {
-                    DrowCard(playerHand);
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    DrowCard4(EnemyHand);
-                }
-                ChangeTurn();
-                break;
-            case 2:
-                for (int i = 0; i < 11; i++)
-                {
-                    DrowCard2(playerHand);
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    DrowCard3(EnemyHand);
-                }
-                PlayerTurn();
-                break;
+            DrowCard(playerHand);
+        }
+        for (int i = 0; i < 11; i++)
+        {
+            DrowCard2(EnemyHand);
         }
     }
     void ReShuffle()
-    {   for (int n = 1; n < 10; n++){
+    //ターンごとのデッキリストを定義
+    {
+        DeleteCard();
+        Debug.Log(dCard);
+        for (int n = 1; n < 11; n++)
+        {
+            deck.Remove(n);
+            deck2.Remove(n);
+        }
+        for (int n = 1; n < 10; n++)
+        {
             deck.Add(n);
             deck2.Add(n);
         }
+        if (isPlayerTurn == true)
+            {
+                deck2.Add(10);
+            }
+            else
+            {
+                deck.Add(10);
+            }
         if (dCard == 1)
         {
             deck.Remove(t1);
+            deck2.Remove(t1);
         }
         if (dCard == 2)
         {
             deck.Remove(t1);
             deck.Remove(t2);
+            deck2.Remove(t1);
+            deck2.Remove(t2);
+        }
+        if (dCard == 3)
+        {
+            deck.Remove(t1);
+            deck.Remove(t2);
+            deck.Remove(t3);
+            deck2.Remove(t1);
+            deck2.Remove(t2);
+            deck2.Remove(t3);
+        }
+        if (dCard == 4)
+        {
+            deck.Remove(t1);
+            deck.Remove(t2);
+            deck.Remove(t3);
+            deck.Remove(t4);
+            deck2.Remove(t1);
+            deck2.Remove(t2);
+            deck2.Remove(t3);
+            deck2.Remove(t4);
+        }
+        if (dCard == 5)
+        {
+            deck.Remove(t1);
+            deck.Remove(t2);
+            deck.Remove(t3);
+            deck.Remove(t4);
+            deck.Remove(t5);
+            deck2.Remove(t1);
+            deck2.Remove(t2);
+            deck2.Remove(t3);
+            deck2.Remove(t4);
+            deck2.Remove(t5);
+        }
+        if (dCard == 6)
+        {
+            deck.Remove(t1);
+            deck.Remove(t2);
+            deck.Remove(t3);
+            deck.Remove(t4);
+            deck.Remove(t5);
+            deck.Remove(t6);
+            deck2.Remove(t1);
+            deck2.Remove(t2);
+            deck2.Remove(t3);
+            deck2.Remove(t4);
+            deck2.Remove(t5);
+            deck2.Remove(t6);
+        }
+        if (dCard == 7)
+        {
+            deck.Remove(t1);
+            deck.Remove(t2);
+            deck.Remove(t3);
+            deck.Remove(t4);
+            deck.Remove(t5);
+            deck.Remove(t6);
+            deck.Remove(t7);
+            deck2.Remove(t1);
+            deck2.Remove(t2);
+            deck2.Remove(t3);
+            deck2.Remove(t4);
+            deck2.Remove(t5);
+            deck2.Remove(t6);
+            deck2.Remove(t7);
+        }
+        if (dCard == 8)
+        {
+            deck.Remove(t1);
+            deck.Remove(t2);
+            deck.Remove(t3);
+            deck.Remove(t4);
+            deck.Remove(t5);
+            deck.Remove(t6);
+            deck.Remove(t7);
+            deck.Remove(t8);
+            deck2.Remove(t1);
+            deck2.Remove(t2);
+            deck2.Remove(t3);
+            deck2.Remove(t4);
+            deck2.Remove(t5);
+            deck2.Remove(t6);
+            deck2.Remove(t7);
+            deck2.Remove(t8);
+        }
+        if (dCard == 9)
+        {
+            deck.Remove(t1);
+            deck.Remove(t2);
+            deck.Remove(t3);
+            deck.Remove(t4);
+            deck.Remove(t5);
+            deck.Remove(t6);
+            deck.Remove(t7);
+            deck.Remove(t8);
+            deck.Remove(t9);
+            deck2.Remove(t1);
+            deck2.Remove(t2);
+            deck2.Remove(t3);
+            deck2.Remove(t4);
+            deck2.Remove(t5);
+            deck2.Remove(t6);
+            deck2.Remove(t7);
+            deck2.Remove(t8);
+            deck2.Remove(t9);
+            //勝利条件を満たした
         }
     }
-    */
+    void DeleteCard()
+    {
+        GameObject[] Card1 = GameObject.FindGameObjectsWithTag("Card1");
+        foreach (GameObject card1 in Card1)
+            GameObject.Destroy(card1);
+        GameObject[] Card2 = GameObject.FindGameObjectsWithTag("Card2");
+        foreach (GameObject card2 in Card2)
+            GameObject.Destroy(card2);
+        GameObject[] Card3 = GameObject.FindGameObjectsWithTag("Card3");
+        foreach (GameObject card3 in Card3)
+            GameObject.Destroy(card3);
+        GameObject[] Card4 = GameObject.FindGameObjectsWithTag("Card4");
+        foreach (GameObject card4 in Card4)
+            GameObject.Destroy(card4);
+        GameObject[] Card5 = GameObject.FindGameObjectsWithTag("Card5");
+        foreach (GameObject card5 in Card5)
+            GameObject.Destroy(card5);
+        GameObject[] Card6 = GameObject.FindGameObjectsWithTag("Card6");
+        foreach (GameObject card6 in Card6)
+            GameObject.Destroy(card6);
+        GameObject[] Card7 = GameObject.FindGameObjectsWithTag("Card7");
+        foreach (GameObject card7 in Card7)
+            GameObject.Destroy(card7);
+        GameObject[] Card8 = GameObject.FindGameObjectsWithTag("Card8");
+        foreach (GameObject card8 in Card8)
+            GameObject.Destroy(card8);
+        GameObject[] Card9 = GameObject.FindGameObjectsWithTag("Card9");
+        foreach (GameObject card9 in Card9)
+            GameObject.Destroy(card9);
+    }
+    public void MaxGauge()
+    {
+        UIobj.fillAmount = 1;
+    }
+
 }

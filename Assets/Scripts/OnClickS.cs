@@ -22,10 +22,13 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
     public Sprite eight;
     public Sprite nine;
     public Sprite joker;
+    float seconds;
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        //ゲージカウントをリセット
+        GameManager.Instance.MaxGauge();
         //Y座標を移動
         Transform myTransform = this.transform;
         Vector3 pos = myTransform.position;
@@ -40,6 +43,9 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             foreach (GameObject card1 in Card1)
                 GameObject.Destroy(card1, 1.0f);
             GameManager.Instance.countDown = 5.0f;
+            //お試し
+            ReDeck(1);
+            Debug.Log("1ターン目に消されたのは"+GameManager.Instance.t1);
         }
         if (this.gameObject.CompareTag("Card2"))
         {
@@ -48,6 +54,8 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             foreach (GameObject card2 in Card2)
                 GameObject.Destroy(card2, 1.0f);
             GameManager.Instance.countDown = 5.0f;
+            ReDeck(2);
+            Debug.Log("1ターン目に消されたのは" + GameManager.Instance.t1);
         }
         if (this.gameObject.CompareTag("Card3"))
         {
@@ -56,6 +64,8 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             foreach (GameObject card3 in Card3)
                 GameObject.Destroy(card3, 1.0f);
             GameManager.Instance.countDown = 5.0f;
+            ReDeck(3);
+            Debug.Log("1ターン目に消されたのは" + GameManager.Instance.t1);
         }
         if (this.gameObject.CompareTag("Card4"))
         {
@@ -64,6 +74,8 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             foreach (GameObject card4 in Card4)
                 GameObject.Destroy(card4, 1.0f);
             GameManager.Instance.countDown = 5.0f;
+            ReDeck(4);
+            Debug.Log("1ターン目に消されたのは" + GameManager.Instance.t1);
         }
         if (this.gameObject.CompareTag("Card5"))
         {
@@ -72,6 +84,8 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             foreach (GameObject card5 in Card5)
                 GameObject.Destroy(card5, 1.0f);
             GameManager.Instance.countDown = 5.0f;
+            ReDeck(5);
+            Debug.Log("1ターン目に消されたのは" + GameManager.Instance.t1);
         }
         if (this.gameObject.CompareTag("Card6"))
         {
@@ -80,6 +94,8 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             foreach (GameObject card6 in Card6)
                 GameObject.Destroy(card6, 1.0f);
             GameManager.Instance.countDown = 5.0f;
+            ReDeck(6);
+            Debug.Log("1ターン目に消されたのは" + GameManager.Instance.t1);
         }
         if (this.gameObject.CompareTag("Card7"))
         {
@@ -88,6 +104,8 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             foreach (GameObject card7 in Card7)
                 GameObject.Destroy(card7, 1.0f);
             GameManager.Instance.countDown = 5.0f;
+            ReDeck(7);
+            Debug.Log("1ターン目に消されたのは" + GameManager.Instance.t1);
         }
         if (this.gameObject.CompareTag("Card8"))
         {
@@ -96,6 +114,8 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             foreach (GameObject card8 in Card8)
                 GameObject.Destroy(card8, 1.0f);
             GameManager.Instance.countDown = 5.0f;
+            ReDeck(8);
+            Debug.Log("1ターン目に消されたのは" + GameManager.Instance.t1);
         }
         if (this.gameObject.CompareTag("Card9"))
         {
@@ -104,6 +124,8 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             foreach (GameObject card9 in Card9)
                 GameObject.Destroy(card9, 1.0f);
             GameManager.Instance.countDown = 5.0f;
+            ReDeck(9);
+            Debug.Log("1ターン目に消されたのは" + GameManager.Instance.t1);
         }
         if (this.gameObject.CompareTag("Card10"))
         {
@@ -111,9 +133,59 @@ public class OnClickS : MonoBehaviour, IPointerClickHandler
             GameObject[] Card10 = GameObject.FindGameObjectsWithTag("Card10");
             foreach (GameObject card10 in Card10)
                 GameObject.Destroy(card10, 1.0f);
-            GameManager.Instance.ChangeTurn();
+            GameManager.Instance.countDown = 5.0f;
+            //GameManager.Instance.ChangeTurn();
+            //Invoke("GMChangeTurn",1);
+            GMChangeTurn();
         }
 
+    }
+    void ReDeck(int n)
+    {
+        GameManager.Instance.dCard++;
+        int deCard = GameManager.Instance.dCard;
+        if (deCard == 1)
+        {
+            GameManager.Instance.t1 = n;
+        }
+        if (deCard == 2)
+        {
+            GameManager.Instance.t2 = n;
+        }
+        if (deCard == 3)
+        {
+            GameManager.Instance.t3 = n;
+        }
+        if (deCard == 4)
+        {
+            GameManager.Instance.t4 = n;
+        }
+        if (deCard == 5)
+        {
+            GameManager.Instance.t5 = n;
+        }
+        if (deCard == 6)
+        {
+            GameManager.Instance.t6 = n;
+        }
+        if (deCard == 7)
+        {
+            GameManager.Instance.t7 = n;
+        }
+        if (deCard == 8)
+        {
+            GameManager.Instance.t8 = n;
+        }
+        if (deCard == 9)
+        {
+            GameManager.Instance.t9 = n;
+        }
+
+    }
+    void GMChangeTurn()
+    {
+        GameManager.Instance.ChangeTurn();
+        //Debug.Log("naze");
     }
     
 }
