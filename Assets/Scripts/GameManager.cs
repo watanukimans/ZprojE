@@ -66,91 +66,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         CardController card = Instantiate(cardPrefab, place);
         card.Init(cardID);
         //お試し用4行
-        if (cardID == 1)
-        {
-            card.tag = "Card1";
-        }
-        if (cardID == 2)
-        {
-            card.tag = "Card2";
-        }
-        if (cardID == 3)
-        {
-            card.tag = "Card3";
-        }
-        if (cardID == 4)
-        {
-            card.tag = "Card4";
-        }
-        if (cardID == 5)
-        {
-            card.tag = "Card5";
-        }
-        if (cardID == 6)
-        {
-            card.tag = "Card6";
-        }
-        if (cardID == 7)
-        {
-            card.tag = "Card7";
-        }
-        if (cardID == 8)
-        {
-            card.tag = "Card8";
-        }
-        if (cardID == 9)
-        {
-            card.tag = "Card9";
-        }
-        if (cardID == 10)
-        {
-            card.tag = "Card10";
-        }
+        card.tag = "Card" + cardID;
     }
     public void CreateCard2(int cardID, Transform place)
     {
         CardController card = Instantiate(cardPrefab, place);
         card.Initura(cardID);
-        if (cardID == 1)
-        {
-            card.tag = "Card1";
-        }
-        if (cardID == 2)
-        {
-            card.tag = "Card2";
-        }
-        if (cardID == 3)
-        {
-            card.tag = "Card3";
-        }
-        if (cardID == 4)
-        {
-            card.tag = "Card4";
-        }
-        if (cardID == 5)
-        {
-            card.tag = "Card5";
-        }
-        if (cardID == 6)
-        {
-            card.tag = "Card6";
-        }
-        if (cardID == 7)
-        {
-            card.tag = "Card7";
-        }
-        if (cardID == 8)
-        {
-            card.tag = "Card8";
-        }
-        if (cardID == 9)
-        {
-            card.tag = "Card9";
-        }
-        if (cardID == 10)
-        {
-            card.tag = "Card10";
-        }
+        card.tag = "Card" + cardID;
     }
     void DrowCard(Transform hand) // カードを引く
     {
