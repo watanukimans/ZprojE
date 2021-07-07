@@ -30,6 +30,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public int t9;
     public Image UIobj;
     public float countTime = 5.0f;
+    //public GameObject allCard;
 
 
     void Start()

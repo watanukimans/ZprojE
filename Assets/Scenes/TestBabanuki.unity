@@ -542,6 +542,7 @@ MonoBehaviour:
   t9: 0
   UIobj: {fileID: 342307956}
   countTime: 5
+  allCard: {fileID: 0}
 --- !u!4 &1796174335
 Transform:
   m_ObjectHideFlags: 0
