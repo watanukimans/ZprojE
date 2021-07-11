@@ -42,13 +42,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public GameObject MayuL;
     public GameObject Uwakutibiru;
     public GameObject Sitakutibiru;
+    public GameObject Yajirusi;
     Vector3 startSize;
 
 
     void Start()
     {
         StartGame();
-        startSize = new Vector3(1f, 1f, 1f);
+        
     }
     void Update()
     {
@@ -207,6 +208,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
     void PlayerTurn()
     {
+        ChangeHand();
         Emotion = 10;
         ResetFace();
         MaxGauge();
@@ -220,6 +222,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     void EnemyTurn()
     {
+        ChangeHand();
         Emotion = 10;
         ResetFace();
         MaxGauge();
@@ -449,7 +452,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         Transform umrTransform = UwamabutaR.transform;
         //位置
         Vector3 posr = umrTransform.localPosition;
-        posr.y += 1f;
+        posr.y += 0.1f;
         umrTransform.localPosition = posr;
         //しなり
         //角度
@@ -461,7 +464,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         Transform umlTransform = UwamabutaL.transform;
         //位置
         Vector3 posl = umlTransform.localPosition;
-        posl.y += 1f;
+        posl.y += 0.1f;
         umlTransform.localPosition = posl;
         //しなり
         //角度
@@ -477,7 +480,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //位置
         Transform umrTransform = UwamabutaR.transform;
         Vector3 posr = umrTransform.localPosition;
-        posr.y -= 1f;
+        posr.y -= 0.1f;
         umrTransform.localPosition = posr;
         //しなり
         //角度
@@ -488,7 +491,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //位置
         Transform umlTransform = UwamabutaL.transform;
         Vector3 posl = umlTransform.localPosition;
-        posl.y -= 1f;
+        posl.y -= 0.1f;
         umlTransform.localPosition = posl;
         //しなり
         //角度
@@ -504,7 +507,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //位置
         Transform smrTransform = SitamabutaR.transform;
         Vector3 posr = smrTransform.localPosition;
-        posr.y += 1f;
+        posr.y += 0.1f;
         smrTransform.localPosition = posr;
         //しなり
         //角度
@@ -516,7 +519,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //位置
         Transform smlTransform = SitamabutaL.transform;
         Vector3 posl = smlTransform.localPosition;
-        posl.y += 1f;
+        posl.y += 0.1f;
         smlTransform.localPosition = posl;
         //しなり
         //角度
@@ -533,7 +536,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //位置
         Transform smrTransform = SitamabutaR.transform;
         Vector3 posr = smrTransform.localPosition;
-        posr.y -= 1f;
+        posr.y -= 0.1f;
         smrTransform.localPosition = posr;
         //しなり
         //角度
@@ -545,7 +548,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //位置
         Transform smlTransform = SitamabutaL.transform;
         Vector3 posl = smlTransform.localPosition;
-        posl.y -= 1f;
+        posl.y -= 0.1f;
         smlTransform.localPosition = posl;
         //しなり
         //角度
@@ -610,7 +613,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         Transform mrTransform = MayuR.transform;
         //角度
         Vector3 localAngleR = mrTransform.localEulerAngles;
-        localAngleR.z += 10f;
+        localAngleR.z += 5f;
         mrTransform.localEulerAngles = localAngleR;
         //しなり
 
@@ -681,12 +684,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
     void ResetFace()
     {
-        
+        startSize = new Vector3(1f, 1f, 1f);
         //右上瞼
         Transform umrTransform = UwamabutaR.transform;
         //位置
         Vector3 posr = umrTransform.localPosition;
-        posr.y = 57.75f;
+        posr.y = 55.8f;
         umrTransform.localPosition = posr;
         //しなり
         //角度
@@ -698,7 +701,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         Transform umlTransform = UwamabutaL.transform;
         //位置
         Vector3 posl = umlTransform.localPosition;
-        posl.y = 57.75f;
+        posl.y = 55.8f;
         umlTransform.localPosition = posl;
         //しなり
         //角度
@@ -710,7 +713,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //位置
         Transform smrTransform = SitamabutaR.transform;
         Vector3 possmr = smrTransform.localPosition;
-        possmr.y = 57.75f;
+        possmr.y = 55.8f;
         smrTransform.localPosition = possmr;
         //しなり
         //角度
@@ -722,7 +725,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //位置
         Transform smlTransform = SitamabutaL.transform;
         Vector3 possml = smlTransform.localPosition;
-        possml.y = 57.75f;
+        possml.y = 55.8f;
         smlTransform.localPosition = possml;
         //しなり
         //角度
@@ -735,5 +738,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         ebTransform.localScale = startSize;
         //振動
     }
-
+    void ChangeHand()
+    {
+        Vector3 PHpos=playerHand.transform.position;
+        Vector3 EHpos = EnemyHand.transform.position;
+        EnemyHand.transform.position = PHpos;
+        playerHand.transform.position = EHpos;
+    }
 }

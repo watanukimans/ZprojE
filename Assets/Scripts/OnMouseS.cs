@@ -14,22 +14,26 @@ public class OnMouseS : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         Vector3 Apos = thisCard.transform.position;
         Vector3 Jpos = GameObject.FindGameObjectWithTag("Card10").transform.position;
+        Vector3 Ypos = GameManager.Instance.Yajirusi.transform.position;
+        //Vector3 Bpos = thisCard.transform.localPosition;
+        Ypos.x = Apos.x;
+        GameManager.Instance.Yajirusi.transform.position = Ypos;
         float distance = (Apos - Jpos).magnitude;
         Debug.Log(distance);
         //Y座標が100以下の時実行
         //if (Apos.y<100)
         //{
             Debug.Log("入ったよ");
-            if (distance < 47)
+            if (distance < 37)
             {
                 return;
             }
-            else if (distance >= 47&&distance <48)
+            else if (distance >= 37&&distance <38)
             {
             GameManager.Instance.EmotionMinus();
                 Debug.Log("1番近いカードです");
             }
-            else if (distance >= 95 && distance < 96)
+            else if (distance >= 74 && distance < 75)
             {
             for(int i=0; i<2; i++)
             {
@@ -37,7 +41,7 @@ public class OnMouseS : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
                 Debug.Log("2番目に近いカードです");
             }
-            else if (distance >= 143 && distance < 144)
+            else if (distance >= 111 && distance < 112)
             {
             for (int i = 0; i < 3; i++)
             {
@@ -45,7 +49,7 @@ public class OnMouseS : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
             Debug.Log("3番目に近いカードです");
             }
-            else if (distance >= 190 && distance < 191)
+            else if (distance >= 148 && distance < 149)
             {
             for (int i = 0; i < 4; i++)
             {
@@ -53,7 +57,7 @@ public class OnMouseS : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
             Debug.Log("4番目に近いカードです");
             }
-            else if (distance >= 238 && distance < 239)
+            else if (distance >= 185 && distance < 186)
             {
             for (int i = 0; i < 5; i++)
             {
@@ -61,7 +65,7 @@ public class OnMouseS : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
             Debug.Log("5番目に近いカードです");
             }
-            else if (distance >= 286 && distance < 297)
+            else if (distance >= 222 && distance < 223)
             {
             for (int i = 0; i < 6; i++)
             {
@@ -69,7 +73,7 @@ public class OnMouseS : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
             Debug.Log("6番目に近いカードです");
             }
-            else if (distance >= 333 && distance < 334)
+            else if (distance >= 259 && distance < 260)
             {
             for (int i = 0; i < 7; i++)
             {
@@ -77,7 +81,7 @@ public class OnMouseS : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
             Debug.Log("7番目に近いカードです");
             }
-            else if (distance >= 381 && distance < 382)
+            else if (distance >= 296 && distance < 297)
             {
             for (int i = 0; i < 8; i++)
             {
@@ -85,7 +89,7 @@ public class OnMouseS : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
             Debug.Log("8番目に近いカードです");
             }
-            else if (distance >= 429 && distance < 430)
+            else if (distance >= 333 && distance < 334)
             {
             for (int i = 0; i < 9; i++)
             {
@@ -100,64 +104,64 @@ public class OnMouseS : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Vector3 Apos = thisCard.transform.position;
         Vector3 Jpos = GameObject.FindGameObjectWithTag("Card10").transform.position;
         float distance = (Apos - Jpos).magnitude;
-        if (distance < 47)
+        if (distance < 37)
         {
             return;
         }
-        else if (distance >= 47 && distance < 48)
+        else if (distance >= 37 && distance < 38)
         {
             GameManager.Instance.EmotionPlus();
         }
-        else if (distance >= 95 && distance < 96)
+        else if (distance >= 74 && distance < 75)
         {
             for (int i = 0; i < 2; i++)
             {
                 GameManager.Instance.EmotionPlus();
             }
         }
-        else if (distance >= 143 && distance < 144)
+        else if (distance >= 111 && distance < 112)
         {
             for (int i = 0; i < 3; i++)
             {
                 GameManager.Instance.EmotionPlus();
             }
         }
-        else if (distance >= 190 && distance < 191)
+        else if (distance >= 148 && distance < 149)
         {
             for (int i = 0; i < 4; i++)
             {
                 GameManager.Instance.EmotionPlus();
             }
         }
-        else if (distance >= 238 && distance < 239)
+        else if (distance >= 185 && distance < 186)
         {
             for (int i = 0; i < 5; i++)
             {
                 GameManager.Instance.EmotionPlus();
             }
         }
-        else if (distance >= 286 && distance < 297)
+        else if (distance >= 222 && distance < 223)
         {
             for (int i = 0; i < 6; i++)
             {
                 GameManager.Instance.EmotionPlus();
             }
         }
-        else if (distance >= 333 && distance < 334)
+        else if (distance >= 259 && distance < 260)
         {
             for (int i = 0; i < 7; i++)
             {
                 GameManager.Instance.EmotionPlus();
             }
         }
-        else if (distance >= 381 && distance < 382)
+        else if (distance >= 296 && distance < 297)
         {
             for (int i = 0; i < 8; i++)
             {
                 GameManager.Instance.EmotionPlus();
             }
         }
-        else if (distance >= 429 && distance < 430)
+        else if (distance >= 333 && distance < 334)
         {
             for (int i = 0; i < 9; i++)
             {
