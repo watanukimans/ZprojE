@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Card5
   m_EditorClassIdentifier: 
   cardID: 5
-  icon: {fileID: 21300000, guid: 031655f3473c32041985612b75d0145d, type: 3}
-  ura: {fileID: 21300000, guid: 98b7a469924e17745994c09fc7d4bb65, type: 3}
+  icon: {fileID: 21300000, guid: 5a9ed2b48cacda94f9bde01d9cf7b7bb, type: 3}
+  ura: {fileID: 21300000, guid: 37fdfa774d7215844b2fca60fa4d0df6, type: 3}
