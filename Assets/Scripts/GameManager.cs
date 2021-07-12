@@ -31,11 +31,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Image UIobj;
     public float countTime = 5.0f;
 
-<<<<<<< HEAD
+
     //funamon変数
     public GameObject PlayerDeck;
     public GameObject EnemyDeck;
-=======
+
     int Emotion = 10;
     public GameObject UwamabutaR;
     public GameObject UwamabutaL;
@@ -48,8 +48,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public GameObject Uwakutibiru;
     public GameObject Sitakutibiru;
     public GameObject Yajirusi;
-    Vector3 startSize;
->>>>>>> 0b48cb5a7e17e3954712b7840c3293d16d5458bf
+    //Vector3 startSize;
+
 
 
     void Start()
