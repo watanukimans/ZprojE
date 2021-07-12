@@ -7,96 +7,134 @@ public class FaceScript : MonoBehaviour
 {
     //普通の顔は１０
     int Emotion = 10;
-    Image Uwamabuta;
-    Image Sitamabuta;
+    Image UwamabutaR;
+    Image UwamabutaL;
+    Image SitamabutaR;
+    Image SitamabutaL;
     Image Eyeball;
     Image Namida;
+    Image MayuR;
+    Image MayuL;
+    Image MouthClose;
+    Image MouthOpen;
     // Start is called before the first frame update
     void UwamabutaMinus()
     {
-        if (Emotion < 20 && Emotion > 0)
-        {
-            Transform umTransform = Uwamabuta.transform;
+        
+            //右上瞼
+            Transform umrTransform = UwamabutaR.transform;
             //位置
-            Vector3 pos = umTransform.position;
-            pos.y += 1f;
-            umTransform.position = pos;
+            Vector3 posr = umrTransform.position;
+            posr.y += 1f;
+            umrTransform.position = posr;
             //しなり
             //角度
-            Vector3 localAngle = umTransform.localEulerAngles;
-            localAngle.z += 10f;
-            umTransform.localEulerAngles = localAngle;
-        }
-        else
-        {
-            return;
-        }
+            Vector3 localAngleR = umrTransform.localEulerAngles;
+            localAngleR.z += 10f;
+            umrTransform.localEulerAngles = localAngleR;
+
+            //左上瞼
+            Transform umlTransform = UwamabutaL.transform;
+            //位置
+            Vector3 posl = umlTransform.position;
+            posl.y+= 1f;
+            umlTransform.position = posl;
+            //しなり
+            //角度
+            Vector3 localAngleL = umlTransform.localEulerAngles;
+            localAngleL.z -= 10f;
+            umlTransform.localEulerAngles = localAngleL;
+            
+        
 
     }
     void UwamabutaPlus()
     {
-        if (Emotion < 20 && Emotion > 0)
-        {
+        
+            //右上瞼
             //位置
-            Transform umTransform = Uwamabuta.transform;
-            Vector3 pos = umTransform.position;
-            pos.y -= 1f;
-            umTransform.position = pos;
+            Transform umrTransform = UwamabutaR.transform;
+            Vector3 posr = umrTransform.position;
+            posr.y -= 1f;
+            umrTransform.position = posr;
             //しなり
             //角度
-            Vector3 localAngle = umTransform.localEulerAngles;
-            localAngle.z -= 10f;
-            umTransform.localEulerAngles = localAngle;
-        }
-        else
-        {
-            return;
-        }
+            Vector3 localAngleR = umrTransform.localEulerAngles;
+            localAngleR.z -= 10f;
+            umrTransform.localEulerAngles = localAngleR;
+            //左上瞼
+            //位置
+            Transform umlTransform = UwamabutaL.transform;
+            Vector3 posl = umlTransform.position;
+            posl.y -= 1f;
+            umlTransform.position = posl;
+            //しなり
+            //角度
+            Vector3 localAngleL = umlTransform.localEulerAngles;
+            localAngleL.z += 10f;
+            umlTransform.localEulerAngles = localAngleL;
+        
     }
     void SitamabutaMinus()
     {
-        if (Emotion < 20 && Emotion > 0)
-        {
+        
+            //右下瞼
             //位置
-            Transform smTransform = Sitamabuta.transform;
-            Vector3 pos = smTransform.position;
-            pos.y += 1f;
-            smTransform.position = pos;
+            Transform smrTransform = SitamabutaR.transform;
+            Vector3 posr = smrTransform.position;
+            posr.y += 1f;
+            smrTransform.position = posr;
             //しなり
             //角度
-            Vector3 localAngle = smTransform.localEulerAngles;
-            localAngle.z += 10f;
-            smTransform.localEulerAngles = localAngle;
-        }
-        else
-        {
-            return;
-        }
+            Vector3 localAngleR = smrTransform.localEulerAngles;
+            localAngleR.z += 10f;
+            smrTransform.localEulerAngles = localAngleR;
+
+            //左下瞼
+            //位置
+            Transform smlTransform = SitamabutaL.transform;
+            Vector3 posl = smlTransform.position;
+            posl.y += 1f;
+            smlTransform.position = posl;
+            //しなり
+            //角度
+            Vector3 localAngleL = smlTransform.localEulerAngles;
+            localAngleL.z -= 10f;
+            smlTransform.localEulerAngles = localAngleL;
+        
+        
     }
     void SitamabutaPlus()
     {
-        if (Emotion < 20 && Emotion > 0)
-        {
+        
+            //右下瞼
             //位置
-            Transform smTransform = Sitamabuta.transform;
-            Vector3 pos = smTransform.position;
-            pos.y -= 1f;
-            smTransform.position = pos;
+            Transform smrTransform = SitamabutaR.transform;
+            Vector3 posr = smrTransform.position;
+            posr.y -= 1f;
+            smrTransform.position = posr;
             //しなり
             //角度
-            Vector3 localAngle = smTransform.localEulerAngles;
-            localAngle.z -= 10f;
-            smTransform.localEulerAngles = localAngle;
-        }
-        else
-        {
-            return;
-        }
+            Vector3 localAngleR = smrTransform.localEulerAngles;
+            localAngleR.z -= 10f;
+            smrTransform.localEulerAngles = localAngleR;
+
+            //左下瞼
+            //位置
+            Transform smlTransform = SitamabutaL.transform;
+            Vector3 posl = smlTransform.position;
+            posl.y -= 1f;
+            smlTransform.position = posl;
+            //しなり
+            //角度
+            Vector3 localAngleL = smlTransform.localEulerAngles;
+            localAngleL.z += 10f;
+            smlTransform.localEulerAngles = localAngleL;
+        
     }
     void EyeBallPlus()
     {
-        if (Emotion < 20 && Emotion > 0)
-        {
+        
             Transform ebTransform = Eyeball.transform;
             //大きさ
             ebTransform.localScale = new Vector3(
@@ -105,16 +143,11 @@ public class FaceScript : MonoBehaviour
                 ebTransform.localScale.z
             );
             //振動
-        }
-        else
-        {
-            return;
-        }
+        
     }
     void EyeBallMinus()
     {
-        if (Emotion < 20 && Emotion > 0)
-        {
+        
             Transform ebTransform = Eyeball.transform;
             //大きさ
             ebTransform.localScale = new Vector3(
@@ -123,16 +156,11 @@ public class FaceScript : MonoBehaviour
                 ebTransform.localScale.z
             );
             //振動
-        }
-        else
-        {
-            return;
-        }
+        
     }
     void NamidaPlus()
     {
-        if (Emotion < 20 && Emotion > 0)
-        {
+        
             Transform nTransform = Namida.transform;
             //大きさ
             nTransform.localScale = new Vector3(
@@ -140,16 +168,11 @@ public class FaceScript : MonoBehaviour
                 nTransform.localScale.y / 1.1f,
                 nTransform.localScale.z
            );
-        }
-        else
-        {
-            return;
-        }
+        
     }
     void NamidaMinus()
     {
-        if (Emotion < 20 && Emotion > 0)
-        {
+        
             Transform nTransform = Namida.transform;
             //大きさ
             nTransform.localScale = new Vector3(
@@ -157,10 +180,87 @@ public class FaceScript : MonoBehaviour
                 nTransform.localScale.y * 1.1f,
                 nTransform.localScale.z
            );
+        
+    }
+    void MayuPlus()
+    {
+        //右眉
+        Transform mrTransform = MayuR.transform;
+        //角度
+        Vector3 localAngleR = mrTransform.localEulerAngles;
+        localAngleR.z -= 10f;
+        mrTransform.localEulerAngles = localAngleR;
+        //しなり
+
+        //左眉
+        Transform mlTransform = MayuL.transform;
+        //角度
+        Vector3 localAngleL = mlTransform.localEulerAngles;
+        localAngleL.z += 10f;
+        mlTransform.localEulerAngles = localAngleL;
+        //しなり
+    }
+    void MayuMinus()
+    {
+        //右眉
+        Transform mrTransform = MayuR.transform;
+        //角度
+        Vector3 localAngleR = mrTransform.localEulerAngles;
+        localAngleR.z += 10f;
+        mrTransform.localEulerAngles = localAngleR;
+        //しなり
+
+        //左眉
+        Transform mlTransform = MayuL.transform;
+        //角度
+        Vector3 localAngleL = mlTransform.localEulerAngles;
+        localAngleL.z -= 10f;
+        mlTransform.localEulerAngles = localAngleL;
+        //しなり
+    }
+        void Mouth()
+    {
+        //しなり
+        //開き具合
+    }
+    void EmotionPlus()
+    {
+        if (Emotion < 20 && Emotion > 0)
+        {
+            Emotion++;
+            UwamabutaPlus();
+            SitamabutaPlus();
+            EyeBallPlus();
+            NamidaMinus();
+        }
+        else
+        {
+            return;
+        }
+        }
+    void EmotionMinus()
+    {
+        if (Emotion < 20 && Emotion > 0)
+        {
+
+            Emotion--;
+        UwamabutaMinus();
+        SitamabutaMinus();
+        EyeBallMinus();
+        NamidaMinus();
         }
         else
         {
             return;
         }
     }
+    /*
+    void vibration(float viblv)
+    {
+        Transform ebTransform = Eyeball.transform;
+        Vector3 pos = ebTransform.position;
+        pos.x -= viblv;
+        ebTransform.position = pos;
+    }
+    */
 }
