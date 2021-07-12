@@ -208,7 +208,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
     void PlayerTurn()
     {
-        ChangeHand();
+        //ChangeHand();
         Emotion = 10;
         ResetFace();
         MaxGauge();
@@ -222,7 +222,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     void EnemyTurn()
     {
-        ChangeHand();
+        //ChangeHand();
         Emotion = 10;
         ResetFace();
         MaxGauge();
@@ -738,11 +738,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         ebTransform.localScale = startSize;
         //振動
     }
-    void ChangeHand()
+    /*void ChangeHand()
     {
         Vector3 PHpos=playerHand.transform.position;
         Vector3 EHpos = EnemyHand.transform.position;
         EnemyHand.transform.position = PHpos;
         playerHand.transform.position = EHpos;
     }
+    */
 }
