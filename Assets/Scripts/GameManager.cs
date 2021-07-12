@@ -48,7 +48,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public GameObject Uwakutibiru;
     public GameObject Sitakutibiru;
     public GameObject Yajirusi;
-    //Vector3 startSize;
+    Vector3 startSize;
 
 
 
