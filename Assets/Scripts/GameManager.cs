@@ -36,10 +36,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public GameObject UwamabutaL;
     public GameObject SitamabutaR;
     public GameObject SitamabutaL;
-    public GameObject EyeballR;
-    public GameObject EyeballL;
-    public GameObject NamidaR;
-    public GameObject NamidaL;
+    public GameObject Eyeball;
+    public GameObject Namida;
     public GameObject MayuR;
     public GameObject MayuL;
     public GameObject Uwakutibiru;
@@ -561,82 +559,53 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     }
     void EyeBallPlus()
     {
-        //右目
-        Transform ebrTransform = EyeballR.transform;
+
+        Transform ebTransform = Eyeball.transform;
         //大きさ
-        ebrTransform.localScale = new Vector3(
-            ebrTransform.localScale.x * 1.1f,
-            ebrTransform.localScale.y * 1.1f,
-            ebrTransform.localScale.z
+        ebTransform.localScale = new Vector3(
+            ebTransform.localScale.x * 1.1f,
+            ebTransform.localScale.y * 1.1f,
+            ebTransform.localScale.z
         );
         //振動
-        //左目
-        Transform eblTransform = EyeballL.transform;
-        //大きさ
-        eblTransform.localScale = new Vector3(
-            eblTransform.localScale.x * 1.1f,
-            eblTransform.localScale.y * 1.1f,
-            eblTransform.localScale.z
-        );
-        //振動
+
     }
     void EyeBallMinus()
     {
-        //右目
-        Transform ebrTransform = EyeballR.transform;
+
+        Transform ebTransform = Eyeball.transform;
         //大きさ
-        ebrTransform.localScale = new Vector3(
-            ebrTransform.localScale.x / 1.1f,
-            ebrTransform.localScale.y / 1.1f,
-            ebrTransform.localScale.z
+        ebTransform.localScale = new Vector3(
+            ebTransform.localScale.x / 1.1f,
+            ebTransform.localScale.y / 1.1f,
+            ebTransform.localScale.z
         );
         //振動
-        //左目
-        Transform eblTransform = EyeballL.transform;
-        //大きさ
-        eblTransform.localScale = new Vector3(
-            eblTransform.localScale.x / 1.1f,
-            eblTransform.localScale.y / 1.1f,
-            eblTransform.localScale.z
-            );
+
     }
     void NamidaPlus()
     {
-        //右涙
-        Transform nrTransform = NamidaR.transform;
+
+        Transform nTransform = Namida.transform;
         //大きさ
-        nrTransform.localScale = new Vector3(
-            nrTransform.localScale.x / 1.1f,
-            nrTransform.localScale.y / 1.1f,
-            nrTransform.localScale.z
+        nTransform.localScale = new Vector3(
+            nTransform.localScale.x / 1.1f,
+            nTransform.localScale.y / 1.1f,
+            nTransform.localScale.z
        );
-        //左涙
-        Transform nlTransform = NamidaL.transform;
-        //大きさ
-        nlTransform.localScale = new Vector3(
-            nlTransform.localScale.x / 1.1f,
-            nlTransform.localScale.y / 1.1f,
-            nlTransform.localScale.z
-       );
+
     }
     void NamidaMinus()
     {
-        //右涙
-        Transform nrTransform = NamidaR.transform;
+
+        Transform nTransform = Namida.transform;
         //大きさ
-        nrTransform.localScale = new Vector3(
-            nrTransform.localScale.x * 1.1f,
-            nrTransform.localScale.y * 1.1f,
-            nrTransform.localScale.z
+        nTransform.localScale = new Vector3(
+            nTransform.localScale.x * 1.1f,
+            nTransform.localScale.y * 1.1f,
+            nTransform.localScale.z
        );
-        //左涙
-        Transform nlTransform = NamidaL.transform;
-        //大きさ
-        nlTransform.localScale = new Vector3(
-            nlTransform.localScale.x * 1.1f,
-            nlTransform.localScale.y * 1.1f,
-            nlTransform.localScale.z
-       );
+
     }
     void MayuPlus()
     {
@@ -764,22 +733,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         localAnglesmL.z = 0f;
         smlTransform.localEulerAngles = localAnglesmL;
 
-        //右目
-        Transform ebrTransform = EyeballR.transform;
+        Transform ebTransform = Eyeball.transform;
         //大きさ
-        ebrTransform.localScale = startSize;
+        ebTransform.localScale = startSize;
         //振動
-        //左目
-        Transform eblTransform = EyeballL.transform;
-        //大きさ
-        eblTransform.localScale = startSize;
-        //振動
-        //右涙
-        Transform nrTransform = NamidaR.transform;
-        nrTransform.localScale = startSize;
-        //左涙
-        Transform nlTransform = NamidaL.transform;
-        nlTransform.localScale = startSize;
     }
     /*void ChangeHand()
     {
