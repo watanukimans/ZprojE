@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 // MonoBehaviourPunCallbacksを継承して、PUNのコールバックを受け取れるようにする
 public class TestScene : MonoBehaviourPunCallbacks
 {
 
     public static GameObject My; //自身のアバターを格納
+    public Text PlayerNum;
 
     private void Start()
     {
@@ -32,6 +34,8 @@ public class TestScene : MonoBehaviourPunCallbacks
         // ランダムな座標に自身のアバター（ネットワークオブジェクト）を生成する
         var position = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         My = PhotonNetwork.Instantiate("Avatar", position, Quaternion.identity);
+        //Debug.Log(photonView.OwnerActorNr);
+        //PlayerNum.text = $"{photonView.Owner.NickName}({photonView.OwnerActorNr})";
     }
 
 
