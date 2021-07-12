@@ -31,6 +31,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Image UIobj;
     public float countTime = 5.0f;
 
+    //funamon変数
+    public GameObject PlayerDeck;
+    public GameObject EnemyDeck;
+
 
     void Start()
     {
@@ -51,6 +55,21 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 GameObject.Destroy(card10);
             ChangeTurn();
         }
+
+        //funamon
+        
+        if (isPlayerTurn) //プレイヤーがカードを引く
+        {
+            PlayerDeck.transform.position = new Vector3(450, 800, 0);
+            EnemyDeck.transform.position = new Vector3(450, 100, 0);
+        }
+        else
+        {
+            PlayerDeck.transform.position = new Vector3(450, 100, 0);
+            EnemyDeck.transform.position = new Vector3(450, 800, 0);
+        }
+        
+
     }
     void StartGame()
     {
@@ -147,7 +166,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         decknum = Random.Range(1, 3);
         switch (decknum)
         {
-            case 1:
+            case 1: //自分ジョーカー
                 /*
                 for (int i = 0; i < 11; i++)
                 {
@@ -160,7 +179,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 */
                 ChangeTurn();
                 break;
-            case 2:
+            case 2: //相手ジョーカー
                 /*
                 for (int i = 0; i < 11; i++)
                 {
